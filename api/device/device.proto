@@ -15,12 +15,12 @@ limitations under the License.
 */
 
 syntax = "proto3";
+option java_package = "org.onosproject.uonos";
 
 // Package topo.device defines interfaces for managing devices.
 package topo.device;
 
 import "google/protobuf/duration.proto";
-import "gogoproto/gogo.proto";
 
 // Protocol to interact with a device
 enum Protocol {
@@ -104,7 +104,7 @@ message UpdateResponse {
 message GetRequest {
 
     // id is the unique device ID with which to lookup the device
-    string id = 1 [(gogoproto.customname) = "ID", (gogoproto.casttype) = "ID"];
+    string id = 1;
 }
 
 // GetResponse carries a device
@@ -165,10 +165,10 @@ message RemoveResponse {
 message Device {
 
     // id is a globally unique device identifier
-    string id = 1 [(gogoproto.customname) = "ID", (gogoproto.casttype) = "ID"];
+    string id = 1;
 
     // revision is the revision of the device
-    uint64 revision = 2 [(gogoproto.casttype) = "Revision"];
+    uint64 revision = 2;
 
     // address is the host:port of the device
     string address = 3;
@@ -180,19 +180,19 @@ message Device {
     string version = 5;
 
     // timeout indicates the device request timeout
-    google.protobuf.Duration timeout = 6 [(gogoproto.stdduration) = true];
+    google.protobuf.Duration timeout = 6;
 
     // credentials contains the credentials for connecting to the device
-    Credentials credentials = 7 [(gogoproto.nullable) = false];
+    Credentials credentials = 7;
 
     // tls is the device TLS configuration
-    TlsConfig tls = 8 [(gogoproto.customname) = "TLS", (gogoproto.nullable) = false];
+    TlsConfig tls = 8;
 
     // type is the type of the device
-    string type = 9 [(gogoproto.casttype) = "Type"];
+    string type = 9;
 
     // role is a role for the device
-    string role = 10 [(gogoproto.casttype) = "Role"];
+    string role = 10;
 
     // attributes is an arbitrary mapping of attribute keys/values
     map<string, string> attributes = 11;
